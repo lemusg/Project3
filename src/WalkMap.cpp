@@ -8,14 +8,12 @@
 using namespace std;
 
 WalkMap::WalkMap(){
-    //generate random distributions for which nodes connected to, how many nodes connected to,
-    // and distance between them
+    //generate random distributions for which nodes connected to and how many nodes to connect
     mt19937 rng(time(nullptr));
     uniform_int_distribution<int> conn(0, 100000);
-    uniform_int_distribution<int> numConn(1, 10);
-    uniform_real_distribution<double> dist(0, 5);
+    uniform_int_distribution<int> numConn(0, 10);
 
-    //create 100000 nodes with 1-10 connections with double distances between them from 0-5
+    //create 100000 nodes with 0-10 connections
     for (int i = 0; i < 100000; i++) {
         int size = connections[i].size();
         //numConn(rng) - connections[i].size() so nodes don't exceed 10 connections
@@ -25,11 +23,9 @@ WalkMap::WalkMap(){
             //prevent node from connecting to itself or a node with 10 connections
             while (r == i || connections[r].size() == 10)
                 r = conn(rng);
-            //generate distance between nodes
-            double d = dist(rng);
-            //insert connection between node i and node r with distance d between them
-            connections[i].emplace_back(r, d);
-            connections[r].emplace_back(i, d);
+            //insert connection between node i and node r
+            connections[i].push_back(r);
+            connections[r].push_back(i);
         }
     }
     cout << "Map Generated" << endl;
