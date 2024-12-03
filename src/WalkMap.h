@@ -1,4 +1,7 @@
 //Gabriel Lemus
+#ifndef WalkMap_H
+#define WalkMap_H
+
 #pragma once
 
 #include <string>
@@ -12,3 +15,5 @@ public:
     map<int, vector<int>> connections;
     WalkMap(int mapSize, int numConnections);
 };
+
+#endif

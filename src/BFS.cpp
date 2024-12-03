@@ -6,10 +6,10 @@
 #include <chrono>
 #include <iostream>
 
-using namespace std::chrono;
+using namespace std;
 
 void BFS::bfs(WalkMap& map, int src, int dest) {
-    auto start = high_resolution_clock::now();
+    auto start = chrono::high_resolution_clock::now();
     set<int> visited;
     queue<int> q;
     visited.insert(src);
@@ -19,8 +19,8 @@ void BFS::bfs(WalkMap& map, int src, int dest) {
         q.pop();
         for(auto v: map.connections[u]) {
             if (v == dest) {
-                auto end = high_resolution_clock::now();
-                auto duration = duration_cast<milliseconds>(end - start);
+                auto end = chrono::high_resolution_clock::now();
+                auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
                 cout << "Path Found! BFS Time Elapsed: " << duration.count() << endl;
                 return;
             }
@@ -30,7 +30,7 @@ void BFS::bfs(WalkMap& map, int src, int dest) {
             }
         }
     }
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(end - start);
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Path Not Found! BFS Time Elapsed: " << duration.count() << endl;
 }

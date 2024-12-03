@@ -1,9 +1,12 @@
 //Gabriel Lemus
+#ifndef DFS_H
+#define DFS_H
 
 #include "WalkMap.h"
-#include <map>
 
 class DFS {
 public:
     static void dfs(WalkMap& map, int src, int dest);
 };
+
+#endif

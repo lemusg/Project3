@@ -1,9 +1,12 @@
 //Gabriel Lemus
+#ifndef BFS_H
+#define BFS_H
 
 #include "WalkMap.h"
-#include <map>
 
 class BFS {
 public:
     static void bfs(WalkMap& map, int src, int dest);
 };
+
+#endif
