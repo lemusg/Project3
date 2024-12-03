@@ -2,12 +2,14 @@
 
 #include "WalkMap.h"
 #include "BFS.h"
-#include "DFS.h"
+#include <iostream>
 
 using namespace std;
 
 int main() {
-    WalkMap walkMap;
-    BFS::bfs(walkMap, 12505, 93960);
-    DFS::dfs(walkMap, 12505, 93960);
+    //
+    int mapSize, numConnections;
+    cin >> mapSize;
+    cin >> numConnections;
+    WalkMap map(mapSize, numConnections);
 }

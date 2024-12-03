@@ -10,5 +10,5 @@ using namespace std;
 class WalkMap {
 public:
     map<int, vector<int>> connections;
-    WalkMap();
+    WalkMap(int mapSize, int numConnections);
 };
