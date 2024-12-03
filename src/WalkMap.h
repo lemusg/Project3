@@ -8,8 +8,7 @@
 using namespace std;
 
 class WalkMap {
-private:
-    map<int, vector<pair<int, double>>> connections;
 public:
+    map<int, vector<int>> connections;
     WalkMap();
 };
