@@ -12,7 +12,7 @@ WalkMap::WalkMap(){
     // and distance between them
     mt19937 rng(time(nullptr));
     uniform_int_distribution<int> conn(0, 100000);
-    uniform_int_distribution<int> numConn(0, 10);
+    uniform_int_distribution<int> numConn(1, 10);
     uniform_real_distribution<double> dist(0, 5);
 
     //create 100000 nodes with 1-10 connections with double distances between them from 0-5
@@ -22,8 +22,8 @@ WalkMap::WalkMap(){
         for (int j = 0; j < numConn(rng) - size; j++) {
             //generate node to connect to
             int r = conn(rng);
-            //prevent node from connecting to itself
-            while (r == i)
+            //prevent node from connecting to itself or a node with 10 connections
+            while (r == i || connections[r].size() == 10)
                 r = conn(rng);
             //generate distance between nodes
             double d = dist(rng);
@@ -33,25 +33,4 @@ WalkMap::WalkMap(){
         }
     }
     cout << "Map Generated" << endl;
-}
-
-//Print out a list of connections and distances for a node
-void WalkMap::printMapNode(int node) {
-    cout << "Location " << node << " Connections:" << endl;
-    for (auto &&connection : connections[node]) {
-        ostringstream s;
-        s << fixed << setprecision(2) << connection.second;
-        cout << "Location " << connection.first << ", Distance: " << s.str() << endl;
-    }
-    cout << endl;
-}
-
-//Find nodes that have more than 10 connections or no connections (shouldn't happen)
-void WalkMap::findErrors() {
-    for (auto &&node : connections) {
-        if (node.second.size() > 10 || node.second.empty()) {
-            printMapNode(node.first);
-        }
-    }
-    cout << "None found" << endl;
 }
