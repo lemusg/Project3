@@ -7,8 +7,8 @@ Group Members: Gabriel Lemus, Jack Ozerovitch, Santiago Tovar
 	- Make sure that during the install, you select Add to PATH for current user
 - Step 2. Clone Repo
 - Step 3. Paste the following into the terminal from the src folder of the repo
-	- 'g++ main.cpp WalkMap.cpp BFS.cpp DFS.cpp -o main'
-- Step 4. Execute the exe by typing './main'
+	- ```g++ main.cpp WalkMap.cpp BFS.cpp DFS.cpp -o main```
+- Step 4. Execute the exe by typing ```./main```
 	- Map size is how many points to generate (high amounts will take a long time to generate, 10 is the suggested value)
 	- Number of connections is the max number of connections that a point can have
 	- Enter source node as an integer from 0 to map size - 1
