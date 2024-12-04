@@ -11,7 +11,7 @@ WalkMap::WalkMap(int mapSize, int numConnections){
     //generate random distributions for which nodes connected to and how many nodes to connect
     mt19937 rng(time(nullptr));
     uniform_int_distribution<int> conn(0, mapSize);
-    uniform_int_distribution<int> numConn(0, numConnections);
+    uniform_int_distribution<int> numConn(1, numConnections);
 
     //create mapSize nodes with 0-numConnections connections
     for (int i = 0; i < mapSize; i++) {
